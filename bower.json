@@ -1,0 +1,19 @@
+{
+  "name": "twigstarter",
+  "version": "1.0.0",
+  "homepage": "https://github.com/blaiskillian/twigstarter",
+  "authors": [
+    "Killian Blais <contact@killianblais.fr>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    // Put your dependencies here
+  }
+}

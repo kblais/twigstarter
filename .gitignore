@@ -1,2 +1,10 @@
-.env
+# Basic ignored files
+.DS_Store
+*.sublime-workspace
+*.sublime-project
 /vendor/
+/node_modules/
+npm-debug.log
+
+# Specific ignored files
+.env
