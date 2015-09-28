@@ -59,6 +59,18 @@ module.exports = function(grunt) {
         }
       }
     },
+    php: {
+      dist: {
+        options: {
+          keepalive: false,
+          port: 8080,
+          base: 'public',
+          hostname: 'localhost',
+          open: true,
+          silent: true,
+        }
+      }
+    },
     delta: {
       options: {
         livereload: true,
@@ -90,12 +102,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-php');
 
   // Task definition
   grunt.registerTask('default', ['less:dev', 'jshint', 'concat']);
   grunt.registerTask('prod', ['less:prod', 'jshint', 'concat']);
 
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask('watch', ['less:dev', 'jshint', 'concat', 'delta']);
+  grunt.registerTask('watch', ['less:dev', 'jshint', 'concat', 'php:dist', 'delta']);
 
 };
