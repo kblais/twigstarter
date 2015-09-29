@@ -27,7 +27,7 @@ if (!function_exists('register_twig')) {
 		$tpl_files = [];
 
 		foreach ($regex as $file) {
-			$tpl_files[str_replace([$views_path . '/', '.twig', '/'], ['', '', '.'], $file[0])] = file_get_contents($file[0]);
+			$tpl_files[str_replace([$views_path . DIRECTORY_SEPARATOR, '.twig', DIRECTORY_SEPARATOR], ['', '', '.'], $file[0])] = file_get_contents($file[0]);
 		}
 
 		$loader = new Twig_Loader_Array($tpl_files);
