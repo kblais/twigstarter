@@ -3,24 +3,43 @@
 use Sabre\HTTP;
 
 if (!function_exists('base_path')) {
+	/**
+	 * Get the base path
+	 * @param	string	$path	Path to append to the base path of the app
+	 * @return	string			Base path
+	 */
 	function base_path($path = null) {
 		return __DIR__ . '/..' . $path;
 	}
 }
 
 if (!function_exists('views_path')) {
+	/**
+	 * Get the views path
+	 * @param	string	$path	Path to append to the views path of the app
+	 * @return	string			Views path
+	 */
 	function views_path($path = null) {
 		return __DIR__ . '/..' . getenv('VIEWS_PATH') . $path;
 	}
 }
 
 if (!function_exists('app_path')) {
+	/**
+	 * Get the app path
+	 * @param	string	$path	Path to append to the app path of the app
+	 * @return	string			App path
+	 */
 	function app_path($path = null) {
 		return __DIR__ . '/../app' . $path;
 	}
 }
 
 if (!function_exists('dd')) {
+	/**
+	 * Dump the given args
+	 * @param	mixed
+	 */
 	function dd()
 	{
 		var_dump(func_get_args());
@@ -29,6 +48,11 @@ if (!function_exists('dd')) {
 }
 
 if (!function_exists('twig')) {
+	/**
+	 * Get a Twig instance
+	 * @param	string			$views_path		Path where views are stored
+	 * @return	Twig_Environment 				Twig environment
+	 */
 	function twig($views_path)
 	{
 		$directory = new RecursiveDirectoryIterator($views_path);
@@ -55,6 +79,10 @@ if (!function_exists('twig')) {
 }
 
 if (!function_exists('request')) {
+	/**
+	 * Get the current request
+	 * @return	Sabre\HTTP\Sapi	Current request
+	 */
 	function request() {
 		$request = HTTP\Sapi::getRequest();
 
@@ -65,6 +93,12 @@ if (!function_exists('request')) {
 }
 
 if (!function_exists('view')) {
+	/**
+	 * Sends compiled view
+	 * @param	string	$tpl_name		Name of the template (in "dot" notation)
+	 * @param	array	$data			Array containing your data; empty by default
+	 * @param	integer	$status_code	HTTP status code for the response; 200 by default
+	 */
 	function view($tpl_name, $data = [], $status_code = 200) {
 		$response = new HTTP\Response();
 
