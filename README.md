@@ -12,8 +12,14 @@ It allows them to easily create templates, using the power of Twig.
 ### Installation
 
 - Clone the repo : ` git clone git@github.com:blaiskillian/twigstarter`
-- Install dependancies : `composer install`
+- Install dependancies :
+	- Composer : `composer install`
+	- NodeJS : `npm install`
 - Copy the .env-example file to .env, and edit the `BASE_URL` with your own if necessary
+
+### How To
+
+Just use the `grunt watch` command, and the script will watch your assets files (located in `/resources/assets/`) and run the app with the PHP built-in webserver
 
 ### Usage
 
