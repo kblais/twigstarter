@@ -5,5 +5,4 @@ $data = [
 	'text' => $faker->text,
 ];
 
-$response->setStatus(200);
-$response->setBody($twig->render('example', $data));
+view('example', $data);

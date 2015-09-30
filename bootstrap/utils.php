@@ -2,6 +2,24 @@
 
 use Sabre\HTTP;
 
+if (!function_exists('base_path')) {
+	function base_path($path = null) {
+		return __DIR__ . '/..' . $path;
+	}
+}
+
+if (!function_exists('views_path')) {
+	function views_path($path = null) {
+		return __DIR__ . '/..' . getenv('VIEWS_PATH') . $path;
+	}
+}
+
+if (!function_exists('app_path')) {
+	function app_path($path = null) {
+		return __DIR__ . '/../app' . $path;
+	}
+}
+
 if (!function_exists('dd')) {
 	function dd()
 	{
@@ -10,15 +28,8 @@ if (!function_exists('dd')) {
 	}
 }
 
-if (!function_exists('send_response')) {
-	function send_response($response)
-	{
-		HTTP\Sapi::sendResponse($response);
-	}
-}
-
-if (!function_exists('register_twig')) {
-	function register_twig($views_path)
+if (!function_exists('twig')) {
+	function twig($views_path)
 	{
 		$directory = new RecursiveDirectoryIterator($views_path);
 		$iterator = new RecursiveIteratorIterator($directory);
@@ -40,5 +51,16 @@ if (!function_exists('register_twig')) {
 		$twig->addExtension(new Twig_Extensions_Extension_Text());
 
 		return $twig;
+	}
+}
+
+if (!function_exists('view')) {
+	function view($tpl_name, $data = [], $status_code = 200) {
+		$response = new HTTP\Response();
+
+		$response->setStatus($status_code);
+		$response->setBody(twig(views_path())->render($tpl_name, $data));
+
+		HTTP\Sapi::sendResponse($response);
 	}
 }
