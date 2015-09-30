@@ -41,4 +41,6 @@ It uses [F. Zaninotto's Faker lib](https://github.com/fzaninotto/Faker). The for
 
 This app uses [sabre/http](sabre.io/http/) library, that provides `Request` and `Response` objects to interact with HTTP requests and reponses.
 
-It provides a `$request` and a `$response` variables in app files, that allow you to access HTTP request data and to create a custom request (HTTP code, headers, etc...).
+To access the `Request` object, use the `request()` function in your code.
+
+Then, using the `view($tpl_name, $data, $status_code)` function, you can send back a `Response` containing the rendered view with the given data. You can also create a custom `Response` instance, look at [Sabre's doc](http://sabre.io/http/sapi/) for more informations.
