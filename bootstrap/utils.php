@@ -54,6 +54,16 @@ if (!function_exists('twig')) {
 	}
 }
 
+if (!function_exists('request')) {
+	function request() {
+		$request = HTTP\Sapi::getRequest();
+
+		$request->setBaseUrl(getenv('BASE_URL'));
+
+		return $request;
+	}
+}
+
 if (!function_exists('view')) {
 	function view($tpl_name, $data = [], $status_code = 200) {
 		$response = new HTTP\Response();
