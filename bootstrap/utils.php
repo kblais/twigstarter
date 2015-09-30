@@ -50,19 +50,18 @@ if (!function_exists('dd')) {
 if (!function_exists('twig')) {
 	/**
 	 * Get a Twig instance
-	 * @param	string			$views_path		Path where views are stored
 	 * @return	Twig_Environment 				Twig environment
 	 */
-	function twig($views_path)
+	function twig()
 	{
-		$directory = new RecursiveDirectoryIterator($views_path);
+		$directory = new RecursiveDirectoryIterator(views_path());
 		$iterator = new RecursiveIteratorIterator($directory);
 		$regex = new RegexIterator($iterator, '/^.+\.twig$/i', RecursiveRegexIterator::GET_MATCH);
 
 		$tpl_files = [];
 
 		foreach ($regex as $file) {
-			$tpl_files[str_replace([$views_path . DIRECTORY_SEPARATOR, '.twig', DIRECTORY_SEPARATOR], ['', '', '.'], $file[0])] = file_get_contents($file[0]);
+			$tpl_files[str_replace([views_path() . DIRECTORY_SEPARATOR, '.twig', DIRECTORY_SEPARATOR], ['', '', '.'], $file[0])] = file_get_contents($file[0]);
 		}
 
 		$loader = new Twig_Loader_Array($tpl_files);
@@ -103,7 +102,7 @@ if (!function_exists('view')) {
 		$response = new HTTP\Response();
 
 		$response->setStatus($status_code);
-		$response->setBody(twig(views_path())->render($tpl_name, $data));
+		$response->setBody(twig()->render($tpl_name, $data));
 
 		HTTP\Sapi::sendResponse($response);
 	}
