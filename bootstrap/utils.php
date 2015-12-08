@@ -73,6 +73,13 @@ if (!function_exists('twig')) {
 		 */
 		$twig->addExtension(new Twig_Extensions_Extension_Text());
 
+		$route_function = new Twig_SimpleFunction('route', function()
+		{
+			return '/';
+		});
+
+		$twig->addFunction($route_function);
+
 		return $twig;
 	}
 }
