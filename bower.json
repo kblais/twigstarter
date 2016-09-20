@@ -1,6 +1,7 @@
 {
   "name": "twigstarter",
   "version": "1.0.0",
+  "private": true,
   "homepage": "https://github.com/blaiskillian/twigstarter",
   "authors": [
     "Killian Blais <contact@killianblais.fr>"

@@ -1,6 +1,7 @@
 {
   "name": "twigstarter",
   "version": "1.0.0",
+  "private": true,
   "description": "TwigStarter is a small app for Twig integrators.",
   "main": "index.js",
   "scripts": {
