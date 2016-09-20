@@ -2,10 +2,6 @@
   "name": "twigstarter",
   "version": "1.0.0",
   "description": "TwigStarter is a small app for Twig integrators.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/blaiskillian/twigstarter.git"
